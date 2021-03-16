@@ -1,0 +1,17 @@
+name: manila-dashboard
+summary: Openstack Manila Dashboard
+maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
+description: |
+  This is the dashboard plugin for the OpenStack shared file system
+  service, Manila.
+tags:
+- openstack
+series:
+- bionic
+- focal
+- groovy
+subordinate: true
+requires:
+  dashboard:
+    interface: dashboard-plugin
+    scope: container

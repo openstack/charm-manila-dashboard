@@ -1,0 +1,26 @@
+charm_name: manila-dashboard
+
+smoke_bundles:
+- bionic-ussuri
+
+gate_bundles:
+- bionic-train
+- bionic-ussuri
+- focal-ussuri
+- focal-victoria
+- groovy-victoria
+
+target_deploy_status:
+  manila:
+    workload-status: blocked
+    workload-status-message: No share backends configured
+
+configure:
+- zaza.charm_tests.noop.setup.basic_setup
+
+tests:
+- zaza.charm_tests.noop.tests.NoopTest
+
+tests_options:
+  force_deploy:
+    - groovy-victoria

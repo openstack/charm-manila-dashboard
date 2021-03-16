@@ -1,0 +1,98 @@
+variables:
+  openstack-origin: &openstack-origin distro
+
+series: focal
+
+comment:
+- 'machines section to decide order of deployment. database sooner = faster'
+machines:
+  '0':
+    constraints: mem=3072M
+  '1':
+    constraints: mem=3072M
+  '2':
+    constraints: mem=3072M
+  '3':
+  '4':
+  '5':
+  '6':
+
+applications:
+  keystone-mysql-router:
+    charm: cs:~openstack-charmers-next/mysql-router
+  manila-mysql-router:
+    charm: cs:~openstack-charmers-next/mysql-router
+  openstack-dashboard-mysql-router:
+    charm: cs:~openstack-charmers-next/mysql-router
+
+  mysql-innodb-cluster:
+    charm: cs:~openstack-charmers-next/mysql-innodb-cluster
+    num_units: 3
+    options:
+      source: *openstack-origin
+    to:
+      - '0'
+      - '1'
+      - '2'
+
+  rabbitmq-server:
+    charm: cs:~openstack-charmers-next/rabbitmq-server
+    num_units: 1
+    to:
+      - '3'
+
+  keystone:
+    charm: cs:~openstack-charmers-next/keystone
+    num_units: 1
+    options:
+      openstack-origin: *openstack-origin
+    to:
+      - '4'
+
+  manila:
+    charm: cs:~openstack-charmers-next/manila
+    num_units: 1
+    options:
+      openstack-origin: *openstack-origin
+    to:
+      - '5'
+
+  openstack-dashboard:
+    charm: cs:~openstack-charmers-next/openstack-dashboard
+    num_units: 1
+    options:
+      openstack-origin: *openstack-origin
+    to:
+      - '6'
+
+  manila-dashboard:
+    charm: ../../../manila-dashboard
+
+relations:
+
+  - - 'keystone:shared-db'
+    - 'keystone-mysql-router:shared-db'
+  - - 'keystone-mysql-router:db-router'
+    - 'mysql-innodb-cluster:db-router'
+
+  - - 'manila:shared-db'
+    - 'manila-mysql-router:shared-db'
+  - - 'manila-mysql-router:db-router'
+    - 'mysql-innodb-cluster:db-router'
+
+  - - 'manila:amqp'
+    - 'rabbitmq-server:amqp'
+
+  - - 'manila:identity-service'
+    - 'keystone:identity-service'
+
+  - - 'openstack-dashboard:shared-db'
+    - 'openstack-dashboard-mysql-router:shared-db'
+  - - 'openstack-dashboard-mysql-router:db-router'
+    - 'mysql-innodb-cluster:db-router'
+
+  - - 'openstack-dashboard:identity-service'
+    - 'keystone:identity-service'
+
+  - - 'openstack-dashboard:dashboard-plugin'
+    - 'manila-dashboard:dashboard'
