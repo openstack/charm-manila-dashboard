@@ -7,7 +7,15 @@
         - bionic-ussuri
         - focal-ussuri
         - focal-victoria
+        - focal-wallaby:
+            voting: false
+        - focal-xena:
+            voting: false
         - groovy-victoria
+        - hirsute-wallaby:
+            voting: false
+        - impish-xena:
+            voting: false
     vars:
       needs_charm_build: true
       charm_build_name: manila-dashboard
