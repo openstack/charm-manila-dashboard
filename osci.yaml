@@ -7,14 +7,14 @@
         - bionic-ussuri
         - focal-ussuri
         - focal-victoria
-        - focal-wallaby:
+        - focal-wallaby
+        - focal-xena
+        - focal-yoga:
             voting: false
-        - focal-xena:
-            voting: false
-        - groovy-victoria
-        - hirsute-wallaby:
-            voting: false
+        - hirsute-wallaby
         - impish-xena:
+            voting: false
+        - jammy-yoga:
             voting: false
     vars:
       needs_charm_build: true
