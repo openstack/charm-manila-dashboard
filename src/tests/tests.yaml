@@ -1,18 +1,13 @@
 charm_name: manila-dashboard
 
 smoke_bundles:
-- focal-ussuri
+- focal-xena
 
 gate_bundles:
-- bionic-ussuri
-- focal-ussuri
-- focal-victoria
 - focal-xena
-- hirsute-wallaby
 - impish-xena
 
 dev_bundles:
-- bionic-train
 - focal-yoga
 - jammy-yoga
 
@@ -29,6 +24,5 @@ tests:
 
 tests_options:
   force_deploy:
-    - hirsute-wallaby
     - impish-xena
     - jammy-yoga
