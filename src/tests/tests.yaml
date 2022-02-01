@@ -14,7 +14,7 @@ dev_bundles:
 target_deploy_status:
   manila:
     workload-status: blocked
-    workload-status-message: No share backends configured
+    workload-status-message-prefix: No share backends configured
 
 configure:
 - zaza.charm_tests.noop.setup.basic_setup
