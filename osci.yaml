@@ -1,21 +1,13 @@
 - project:
     templates:
-      - charm-unit-jobs
+      - charm-unit-jobs-py38
+      - charm-unit-jobs-py39
     check:
       jobs:
-        - bionic-train
-        - bionic-ussuri
-        - focal-ussuri
-        - focal-victoria
-        - focal-wallaby:
-            voting: false
-        - focal-xena:
-            voting: false
-        - groovy-victoria
-        - hirsute-wallaby:
-            voting: false
-        - impish-xena:
-            voting: false
+        - focal-wallaby
+        - focal-xena
+        - impish-xena
     vars:
       needs_charm_build: true
       charm_build_name: manila-dashboard
+      build_type: charmcraft
