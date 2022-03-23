@@ -8,7 +8,6 @@ tags:
 - openstack
 series:
 - focal
-- impish
 subordinate: true
 requires:
   dashboard:
