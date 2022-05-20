@@ -1,19 +1,14 @@
 charm_name: manila-dashboard
 
 smoke_bundles:
-- bionic-ussuri
+- focal-ussuri
 
 gate_bundles:
 - bionic-train
 - bionic-ussuri
 - focal-ussuri
-- focal-victoria
-- focal-xena
 
-dev_bundles:
-- groovy-victoria
-- hirsute-wallaby
-- impish-xena
+dev_bundles: []
 
 target_deploy_status:
   manila:
@@ -27,6 +22,4 @@ tests:
 - zaza.charm_tests.noop.tests.NoopTest
 
 tests_options:
-  force_deploy:
-    - hirsute-wallaby
-    - impish-xena
+  force_deploy: []
