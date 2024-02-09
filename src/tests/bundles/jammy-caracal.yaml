@@ -1,9 +1,9 @@
 variables:
-  openstack-origin: &openstack-origin distro
+  openstack-origin: &openstack-origin cloud:jammy-caracal
 
 local_overlay_enabled: False
 
-series: lunar
+series: jammy
 
 comment:
 - 'machines section to decide order of deployment. database sooner = faster'
@@ -55,7 +55,7 @@ applications:
       openstack-origin: *openstack-origin
     to:
       - '4'
-    channel: latest/edge
+    channel: 2024.1/edge
 
   manila:
     charm: ch:manila
@@ -64,7 +64,7 @@ applications:
       openstack-origin: *openstack-origin
     to:
       - '5'
-    channel: latest/edge
+    channel: 2024.1/edge
 
   openstack-dashboard:
     charm: ch:openstack-dashboard
@@ -73,7 +73,7 @@ applications:
       openstack-origin: *openstack-origin
     to:
       - '6'
-    channel: latest/edge
+    channel: 2024.1/edge
 
   manila-dashboard:
     charm: ../../../manila-dashboard.charm

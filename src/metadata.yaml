@@ -5,11 +5,9 @@ description: |
   This is the dashboard plugin for the OpenStack shared file system
   service, Manila.
 tags:
-- openstack
+  - openstack
 series:
-- jammy
-- lunar
-- mantic
+  - jammy
 subordinate: true
 requires:
   dashboard:
