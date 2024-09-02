@@ -6,8 +6,6 @@ description: |
   service, Manila.
 tags:
   - openstack
-series:
-  - jammy
 subordinate: true
 requires:
   dashboard:
