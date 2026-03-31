@@ -5,9 +5,10 @@ description: |
   This is the dashboard plugin for the OpenStack shared file system
   service, Manila.
 tags:
-  - openstack
+- openstack
 series:
-  - jammy
+- jammy
+- noble
 subordinate: true
 requires:
   dashboard:
